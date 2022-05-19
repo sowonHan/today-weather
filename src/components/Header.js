@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const Back = styled.div`
-  width: 250px;
-  height: 65px;
+  width: 230px;
+  height: 50px;
   background-color: rgb(0, 0, 0, 0.5);
   font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-size: 36px;
+  font-size: 2rem;
   color: white;
   display: flex;
   align-items: center;

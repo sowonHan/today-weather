@@ -5,11 +5,13 @@ import SearchBar from "./../components/SearchBar";
 import styled from "styled-components";
 
 const Background = styled.div`
-  width: 100vw;
+  max-width: 2400px;
   height: 100vh;
+  max-height: 1600px;
   background-image: url("/images/main.jpg");
   background-size: cover;
   background-position: center;
+  position: relative;
 `;
 
 const Margin = styled.div`
@@ -32,13 +34,17 @@ const Info = styled.div`
     color: white;
     font-weight: 500;
   }
+
+  p:not(:last-of-type) {
+    margin-bottom: 12px;
+  }
 `;
 
 const MainPage = () => {
   return (
     <Background>
       <Header />
-      <Margin></Margin>
+      <Margin />
       <SearchBar />
       <Info>
         <p>어제와 비교한 현재 날씨</p>

@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const Text = styled.div`
-  width: 430px;
-  height: 50px;
+const Text = styled.h3`
+  width: 340px;
+  height: 30px;
   color: white;
   font-weight: 400;
-  font-size: 20px;
-  text-align: center;
+  font-size: 1rem;
+  text-align: right;
   background-color: rgb(0, 0, 0, 0.7);
-  line-height: 50px;
+  padding: 0 10px 0 0;
+  margin: 0;
+  line-height: 25px;
   position: absolute;
   bottom: 0;
   right: 0;
