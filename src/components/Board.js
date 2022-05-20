@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Tab from "./Tab";
-import Current from "./Current";
+// import Current from "./Current";
+import Hourly from "./Hourly";
 
 const WhiteBoard = styled.div`
   background-color: rgb(255, 255, 255, 0.9);
@@ -29,7 +30,7 @@ const Board = () => {
       <City>서울</City>
       <Tab />
       <DataContainer>
-        <Current />
+        <Hourly />
       </DataContainer>
     </WhiteBoard>
   );

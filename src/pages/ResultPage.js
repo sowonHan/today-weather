@@ -15,17 +15,21 @@ const WallPaper = styled.div`
   position: relative;
 `;
 
-const Margin = styled.div`
-  margin-bottom: 30px;
+const Margin1 = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Margin2 = styled.div`
+  margin-bottom: 25px;
 `;
 
 const ResultPage = () => {
   return (
     <WallPaper>
       <Header />
-      <Margin />
+      <Margin1 />
       <SearchBar />
-      <Margin />
+      <Margin2 />
       <Board></Board>
       <Footer />
     </WallPaper>

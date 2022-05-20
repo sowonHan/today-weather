@@ -2,13 +2,26 @@ import React from "react";
 import { WiDaySunny } from "react-icons/wi";
 import styled from "styled-components";
 
-const TodayContainer = styled.div`
+const AllContainer = styled.div`
   width: 825px;
   height: 235px;
-  margin: 25px auto 20px;
+  margin: 35px auto 15px;
+
+  & p {
+    font-size: 1.3rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  & > h3 {
+    font-family: "Jua", sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
-const Time = styled.div`
+const Time = styled.p`
   font-size: 1.15rem;
   font-weight: 700;
 `;
@@ -16,15 +29,11 @@ const Time = styled.div`
 const TodayTop = styled.div`
   display: flex;
   margin: 10px 0;
-
-  & div {
-    font-size: 1.3rem;
-  }
+  align-items: center;
 `;
 
 const TodayIcon = styled(WiDaySunny)`
   /* color: orange; */
-  /* width: 120px; */
   flex: 1;
   height: 120px;
 `;
@@ -38,7 +47,7 @@ const FirstRow = styled.div`
   margin-bottom: 20px;
   align-items: center;
 
-  & > div:first-of-type {
+  & > p:first-of-type {
     font-size: 2rem;
     margin-right: 30px;
   }
@@ -47,7 +56,7 @@ const FirstRow = styled.div`
 const SecondRow = styled.div`
   display: flex;
 
-  & > div {
+  & > p {
     flex: 1;
   }
 `;
@@ -56,92 +65,104 @@ const TodayBottom = styled.div`
   display: flex;
   margin: 10px 0;
 
-  & > div {
-    font-size: 1.3rem;
+  & > p:first-of-type {
+    margin-left: 65px;
+    margin-right: 61px;
   }
 
-  & > div:first-of-type {
-    margin-left: 70px;
-    margin-right: 55px;
-  }
-
-  & > div:last-of-type {
-    margin-left: 315px;
+  & > p:last-of-type {
+    margin-left: 314px;
   }
 `;
 
 const Today = () => {
   return (
-    <TodayContainer>
+    <AllContainer>
       <Time>5월 19일 05:31 pm</Time>
       <TodayTop>
-        <TodayIcon />
+        <TodayIcon></TodayIcon>
         <IconNext>
           <FirstRow>
-            <div>19℃</div>
-            <div>체감온도 19℃</div>
+            <p>19℃</p>
+            <p>체감온도 19℃</p>
           </FirstRow>
           <SecondRow>
-            <div>풍속 : 6.7m/s</div>
-            <div>습도 : 45%</div>
-            <div>강우량 : 0.0mm</div>
+            <p>풍속 : 6.7m/s</p>
+            <p>습도 : 45%</p>
+            <p>강우량 : 0.0mm</p>
           </SecondRow>
         </IconNext>
       </TodayTop>
       <TodayBottom>
-        <div>맑음</div>
-        <div>자외선 지수 : 1</div>
-        <div>적설량 : 0.0mm</div>
+        <p>맑음</p>
+        <p>자외선 지수 : 1</p>
+        <p>적설량 : 0.0mm</p>
       </TodayBottom>
-    </TodayContainer>
+    </AllContainer>
   );
 };
 
-const YesterdayContainer = styled.div`
-  width: 825px;
-  height: 250px;
-  margin: 20px auto;
+const SubCon = styled.div`
+  width: 610px;
+  height: 200px;
 
-  & > h3 {
-    font-family: "Jua", sans-serif;
-    font-size: 1.5rem;
+  & p {
+    font-size: 1.3rem;
+    padding: 0;
+    margin: 0;
   }
 `;
 
-const YDataCon = styled.div`
+const LowAndHigh = styled.div`
   width: 610px;
-  height: 200px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+`;
+
+const YesterIcon = styled(WiDaySunny)`
+  flex: 1;
+  height: 60px;
+`;
+
+const DataZone = styled.div`
+  flex: 4;
+`;
+
+const Data2Row = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Yesterday = () => {
   return (
-    <YesterdayContainer>
+    <AllContainer>
       <h3>어제 날씨는 어땠지?</h3>
-      <YDataCon>
-        <div className="low_con">
-          <WiDaySunny />
-          <div className="text_con">
-            <div>최저온도 (오전 5시 기준)</div>
-            <div className="text_2row">
-              <div>19℃</div>
-              <div>체감온도 19℃</div>
-              <div>풍속 : 6.7m/s</div>
-            </div>
-          </div>
-        </div>
-        <div className="high_con">
-          <WiDaySunny />
-          <div className="text_con">
-            <div>최고온도 (오후 3시 기준)</div>
-            <div className="text_2row">
-              <div>19℃</div>
-              <div>체감온도 19℃</div>
-              <div>풍속 : 6.7m/s</div>
-            </div>
-          </div>
-        </div>
-      </YDataCon>
-    </YesterdayContainer>
+      <SubCon>
+        <LowAndHigh>
+          <YesterIcon></YesterIcon>
+          <DataZone>
+            <p>최저온도 (오전 5시 기준)</p>
+            <Data2Row>
+              <p>19℃</p>
+              <p>체감온도 19℃</p>
+              <p>풍속 : 6.7m/s</p>
+            </Data2Row>
+          </DataZone>
+        </LowAndHigh>
+        <LowAndHigh>
+          <YesterIcon />
+          <DataZone>
+            <p>최고온도 (오후 3시 기준)</p>
+            <Data2Row>
+              <p>19℃</p>
+              <p>체감온도 19℃</p>
+              <p>풍속 : 6.7m/s</p>
+            </Data2Row>
+          </DataZone>
+        </LowAndHigh>
+      </SubCon>
+    </AllContainer>
   );
 };
 
