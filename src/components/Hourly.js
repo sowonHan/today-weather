@@ -27,6 +27,14 @@ const ShowContent = styled.div`
   height: 500px;
 `;
 
+const Hide = styled.div`
+    width: ${props => props.isOpen ? "330px" : 0};
+    height: 510px;
+    overflow: hidden;
+    transition-property: width;
+    transition-duration: 1s;
+  `;
+
 const HideBar = styled.div`
   width: 330px;
   height: 5px;
@@ -37,23 +45,19 @@ const HideBar = styled.div`
 const HideContent = styled.div`
   width: 330px;
   height: 500px;
+  padding: 5px;
 `;
 
 const Hourly = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const Hide = styled.div`
-    width: 330px;
-    height: ${isOpen ? "510px" : 0};
-    overflow: hidden;
-    /* height: 510px; */
-    /* display: ${isOpen ? "block" : "none"}; */
-    transition-duration: linear;
-  `;
+  const togglePanel = () => {
+    setIsOpen(prev => !prev)
+  } 
 
   return (
     <AllContainer>
-      <Show onClick={() => setIsOpen((prev) => !prev)}>
+      <Show onClick={togglePanel}>
         <ShowBar />
         <ShowContent>
           <p>10:00</p>
@@ -64,7 +68,7 @@ const Hourly = () => {
           <p>0.0mm</p>
         </ShowContent>
       </Show>
-      <Hide>
+      <Hide isOpen={isOpen}>
         <HideBar />
         <HideContent>
           <p>맑음</p>
