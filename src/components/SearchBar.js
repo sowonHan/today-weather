@@ -25,8 +25,7 @@ const Container = styled.div`
 
 const Input = styled.input`
   display: inline-block;
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #6d6d6d;
   margin-left: 15px;
   width: 800px;

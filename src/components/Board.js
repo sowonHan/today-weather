@@ -14,7 +14,8 @@ const WhiteBoard = styled.div`
 const City = styled.h1`
   font-family: "Jua", sans-serif;
   font-size: 2.5rem;
-  margin: 0 0 0 20px;
+  margin-left: 20px;
+  padding-top: 10px;
   height: 55px;
 `;
 

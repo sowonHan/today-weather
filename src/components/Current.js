@@ -4,20 +4,16 @@ import styled from "styled-components";
 
 const AllContainer = styled.div`
   width: 825px;
-  height: 235px;
-  margin: 35px auto 15px;
+  height: 200px;
+  margin: 47px auto 40px;
 
   & p {
     font-size: 1.3rem;
-    padding: 0;
-    margin: 0;
   }
 
   & > h3 {
     font-family: "Jua", sans-serif;
     font-size: 1.5rem;
-    margin: 0;
-    padding: 0;
   }
 `;
 
@@ -55,6 +51,7 @@ const FirstRow = styled.div`
 
 const SecondRow = styled.div`
   display: flex;
+  padding-top: 5px;
 
   & > p {
     flex: 1;
@@ -104,12 +101,11 @@ const Today = () => {
 
 const SubCon = styled.div`
   width: 610px;
-  height: 200px;
+  height: 170px;
+  margin: 3px 0 0 20px;
 
   & p {
-    font-size: 1.3rem;
-    padding: 0;
-    margin: 0;
+    font-size: 1.25rem;
   }
 `;
 
@@ -127,9 +123,21 @@ const YesterIcon = styled(WiDaySunny)`
 
 const DataZone = styled.div`
   flex: 4;
+
+  & > p {
+    font-weight: 600;
+
+    & > span {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-left: 5px;
+    }
+  }
+
 `;
 
 const Data2Row = styled.div`
+  margin-top: 13px;
   display: flex;
   justify-content: space-between;
 `;
@@ -142,7 +150,9 @@ const Yesterday = () => {
         <LowAndHigh>
           <YesterIcon></YesterIcon>
           <DataZone>
-            <p>최저온도 (오전 5시 기준)</p>
+            <p>최저온도
+              <span>(오전 5시 기준)</span>
+            </p>
             <Data2Row>
               <p>19℃</p>
               <p>체감온도 19℃</p>
@@ -153,7 +163,9 @@ const Yesterday = () => {
         <LowAndHigh>
           <YesterIcon />
           <DataZone>
-            <p>최고온도 (오후 3시 기준)</p>
+            <p>최고온도
+              <span>(오후 3시 기준)</span>
+            </p>
             <Data2Row>
               <p>19℃</p>
               <p>체감온도 19℃</p>

@@ -30,7 +30,7 @@ const Info = styled.div`
   justify-content: center;
 
   p {
-    font-size: 32px;
+    font-size: 1.8rem;
     color: white;
     font-weight: 500;
   }

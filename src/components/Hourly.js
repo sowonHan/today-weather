@@ -25,6 +25,11 @@ const ShowBar = styled.div`
 const ShowContent = styled.div`
   width: 110px;
   height: 500px;
+
+  & > p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 `;
 
 const Hide = styled.div`
@@ -46,6 +51,11 @@ const HideContent = styled.div`
   width: 330px;
   height: 500px;
   padding: 5px;
+
+  & > p {
+    font-size: 1.2rem;
+    
+  }
 `;
 
 const Hourly = () => {
@@ -61,7 +71,9 @@ const Hourly = () => {
         <ShowBar />
         <ShowContent>
           <p>10:00</p>
-          <WiDaySunny></WiDaySunny>
+          <div>
+            <WiDaySunny></WiDaySunny>
+          </div>
           <p>19℃</p>
           <p>2.2m/s</p>
           <p>0%</p>
