@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Text = styled.h3`
-  width: 330px;
+  width: 340px;
   height: 30px;
   color: white;
   font-weight: 400;
