@@ -28,8 +28,6 @@ const ColorSeg = styled(Segmented)`
   }
 `;
 
-const Tab = () => (
-  <ColorSeg block options={["현재 날씨", "시간별 예보", "주간 예보"]} />
-);
+const Tab = () => <ColorSeg block options={["현재 날씨", "시간별 예보"]} />;
 
 export default Tab;

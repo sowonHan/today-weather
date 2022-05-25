@@ -36,7 +36,7 @@ const Info = styled.div`
   }
 
   p:not(:last-of-type) {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -47,10 +47,9 @@ const MainPage = () => {
       <Margin />
       <SearchBar />
       <Info>
-        <p>어제와 비교한 현재 날씨</p>
-        <p>이틀치의 시간별 예보</p>
-        <p>일주일 단위 주간 예보까지</p>
-        <p>원하는 도시의 기상 정보를 지금 바로 확인하세요.</p>
+        <p>내가 사는 도시의 현재 날씨와</p>
+        <p>3시간 간격으로 볼 수 있는 내일 날씨까지.</p>
+        <p>지금 바로 원하는 도시의 일기예보를 확인해보세요!</p>
       </Info>
       <Footer />
     </Background>
