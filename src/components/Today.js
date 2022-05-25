@@ -93,23 +93,39 @@ const Today = ({ latlon }) => {
 
   const onecallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}8&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&exclude=minutely,alerts&units=metric&lang=kr`;
 
-  const [today, setToday] = useState("");
+  const [today, setToday] = useState({
+    temp: "0",
+    feels_like: "0",
+    humidity: "0",
+    uvi: "0",
+    id: "0",
+    description: "",
+    wind_speed: "0.0",
+    rain: "0.0",
+    snow: "0.0",
+  });
 
   useEffect(() => {
     const getToday = async () => {
       try {
-        const onecall = axios.get(onecallUrl).then((rdata) => {
+        const onecall = await axios.get(onecallUrl).then((rdata) => {
           console.log("원콜", rdata);
-          // setToday({
-
-          // });
+          setToday({
+            temp: rdata.data.current.temp,
+            feels_like: rdata.data.current.feels_like,
+            humidity: rdata.data.current.humidity,
+            uvi: rdata.data.current.uvi,
+            id: rdata.data.current.weather[0].id,
+            description: rdata.data.current.weather[0].description,
+            wind_speed: rdata.data.current.wind_speed,
+          });
         });
       } catch (error) {
         console.log("error :", error);
       }
     };
     getToday();
-  }, [latlon]);
+  }, [latlon, onecallUrl]);
 
   return (
     <AllContainer>
@@ -118,19 +134,20 @@ const Today = ({ latlon }) => {
         <TodayIcon></TodayIcon>
         <IconNext>
           <FirstRow>
-            <p>19℃</p>
-            <p>체감온도 19℃</p>
+            {/* <p>19℃</p> */}
+            <p>{today.temp}℃</p>
+            <p>체감온도 {today.feels_like}℃</p>
           </FirstRow>
           <SecondRow>
-            <p>풍속 : 6.7m/s</p>
-            <p>습도 : 45%</p>
-            <p>강우량 : 0.0mm</p>
+            <p>풍속 : {today.wind_speed}m/s</p>
+            <p>습도 : {today.humidity}%</p>
+            <p>강우량 : {today.rain}mm</p>
           </SecondRow>
         </IconNext>
       </TodayTop>
       <TodayBottom>
-        <p>맑음</p>
-        <p>자외선 지수 : 1</p>
+        <p>{today.description}</p>
+        <p>자외선 지수 : {today.uvi}</p>
         <p>적설량 : 0.0mm</p>
       </TodayBottom>
     </AllContainer>
