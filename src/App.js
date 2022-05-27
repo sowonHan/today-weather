@@ -1,12 +1,15 @@
 import React from "react";
 // import MainPage from "./pages/MainPage";
 import ResultPage from "./pages/ResultPage";
+// import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <ResultPage />
-    </>
+    // <Routes>
+    //   <Route path="/" element={<MainPage />} />
+    //   <Route path="/:q" element={<ResultPage />} />
+    // </Routes>
+    <ResultPage />
   );
 }
 

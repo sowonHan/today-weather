@@ -1,6 +1,16 @@
-import React, { useState, useCallback } from "react";
-import { WiDaySunny } from "react-icons/wi";
+import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import {
+  WiDaySunny,
+  WiDayCloudy,
+  WiFog,
+  WiSnowflakeCold,
+  WiUmbrella,
+  WiRainMix,
+  WiThunderstorm,
+  WiWindDeg,
+} from "react-icons/wi";
 
 const AllContainer = styled.div`
   width: 1210px;
@@ -109,6 +119,28 @@ const HideContent = styled.div`
 
 const Hourly = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hours, setHours] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getHourly = async () => {
+      setLoading(true);
+      try {
+        const hourly = await axios
+          .get(
+            "https://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=9"
+          )
+          .then((response) => {
+            const result = response.data.list;
+            setHours(result);
+          });
+      } catch (error) {
+        console.log("에러 :", error);
+      }
+      setLoading(false);
+    };
+    getHourly();
+  }, []);
 
   const togglePanel = useCallback(() => {
     setIsOpen((prev) => !prev);

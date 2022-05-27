@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Tab from "./Tab";
-import Today from "./Today";
-// import Hourly from "./Hourly";
+// import Today from "./Today";
+import Hourly from "./Hourly";
 
 const WhiteBoard = styled.div`
   background-color: rgb(255, 255, 255, 0.9);
@@ -22,7 +22,6 @@ const City = styled.h1`
 
 const DataContainer = styled.div`
   width: 1195px;
-  height: 600px;
   margin: 10px auto;
 `;
 
@@ -32,7 +31,7 @@ const Board = () => {
       <City>서울</City>
       <Tab />
       <DataContainer>
-        <Today />
+        <Hourly />
       </DataContainer>
     </WhiteBoard>
   );
