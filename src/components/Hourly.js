@@ -12,25 +12,36 @@ import {
   WiWindDeg,
 } from "react-icons/wi";
 
+const Loading = styled.div`
+  width: 700px;
+  height: 350px;
+  text-align: center;
+  line-height: 350px;
+  font-size: 3rem;
+  font-weight: 700;
+`;
+
 const AllContainer = styled.div`
-  width: 1210px;
+  width: 1190px;
   height: 530px;
   display: flex;
-  margin-top: 30px;
+  margin: 30px auto 0;
   background-color: white;
-  overflow: scroll;
+  overflow: auto;
+`;
+
+const Data = styled.div`
+  width: 4760px;
+  height: 510px;
+  display: flex;
 `;
 
 const Show = styled.div`
   width: 110px;
   height: 500px;
-
-  &:hover {
-    .hover {
-      background-color: #f35b5b;
-      transition: background-color 0.5s;
-    }
-  }
+  box-sizing: border-box;
+  /* border-left: 1px solid  lightgray; */
+  border-right: 1px solid lightgray;
 `;
 
 const ShowBar = styled.div`
@@ -39,6 +50,11 @@ const ShowBar = styled.div`
   margin-bottom: 5px;
   background-color: white;
   transition: background-color 0.5s;
+
+  ${Show}:hover & {
+    background-color: #f35b5b;
+    transition: background-color 0.5s;
+  }
 `;
 
 const ShowContent = styled.div`
@@ -64,21 +80,21 @@ const IconContainer = styled.div`
   width: 100px;
   height: 285px;
   margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 `;
 
 const Icon = styled.div`
   width: 50px;
   height: 50px;
-  margin: 0 auto;
-`;
-
-const Sample = styled(WiDaySunny)`
-  width: 50px;
-  height: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: ${props => 8 * props.temp}px;
 `;
 
 const Hide = styled.div`
-  width: ${(props) => (props.isOpen ? "220px" : 0)};
+  width: ${(props) => (props.isOpen ? "230px" : 0)};
   height: 510px;
   overflow: hidden;
   transition-property: width;
@@ -86,19 +102,19 @@ const Hide = styled.div`
 `;
 
 const HideBar = styled.div`
-  width: 220px;
+  width: 230px;
   height: 5px;
   background-color: #f35b5b;
   margin-bottom: 5px;
 `;
 
 const HideContent = styled.div`
-  width: 220px;
+  width: 230px;
   height: 500px;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
 
   & > p {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     margin-bottom: 15px;
   }
 
@@ -107,8 +123,7 @@ const HideContent = styled.div`
     font-weight: 600;
   }
 
-  & > p:nth-of-type(2),
-  p:nth-of-type(3) {
+  & > p:not(:first-of-type, :last-of-type) {
     margin-bottom: 40px;
   }
 
@@ -122,17 +137,20 @@ const Hourly = () => {
   const [hours, setHours] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const togglePanel = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
   useEffect(() => {
     const getHourly = async () => {
       setLoading(true);
       try {
         const hourly = await axios
           .get(
-            "https://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=9"
+            "https://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=14"
           )
           .then((response) => {
-            const result = response.data.list;
-            setHours(result);
+            setHours(response.data.list);
           });
       } catch (error) {
         console.log("에러 :", error);
@@ -142,13 +160,71 @@ const Hourly = () => {
     getHourly();
   }, []);
 
-  const togglePanel = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+  const selectIcon = (hour) => {
+    let iconId = hour.weather[0].id === 800 ? 0 : (hour.weather[0].id / 100).toFixed(0);
+
+    switch (iconId) {
+      case 0:
+        return <WiDaySunny size="3rem" color="#ff9100" />;
+      case "2":
+        return <WiThunderstorm size="3rem" color="#682cbf" />;
+      case "3":
+        return <WiRainMix size="3rem" color="#77d195" />;
+      case "5":
+        return <WiUmbrella size="3rem" color="#526eff" />;
+      case "6":
+        return <WiSnowflakeCold size="3rem" color="#c4f5ff" />;
+      case "7":
+        return <WiFog size="3rem" color="#7c5547" />;
+      case "8":
+        return <WiDayCloudy size="3rem" color="#5f7d8e" />;
+      default:
+        return <WiWindDeg size="3rem" />;
+    }
+  };
+
+  if (loading) {
+    return <Loading>일기예보 불러오는 중...</Loading>;
+  }
+
+  if (!hours) {
+    return null;
+  }
 
   return (
     <AllContainer>
-      <Show onClick={togglePanel}>
+      {hours.map((hour) => (
+        <Data key={hour.dt}>
+          <Show id={hour.dt} onClick={togglePanel}>
+            <ShowBar />
+            <ShowContent>
+              <p>{hour.dt_txt.substr(11, 5)}</p>
+              <IconContainer>
+                <Icon temp={hour.main.temp}>
+                  {selectIcon(hour)}
+                </Icon>
+              </IconContainer>
+              <p>{hour.main.temp}℃</p>
+              <p>{hour.wind.speed}m/s</p>
+              <p>{hour.pop}%</p>
+              <p>{hour.hasOwnProperty("rain") ? hour.rain["3h"] : "0.0"}mm</p>
+            </ShowContent>
+          </Show>
+          <Hide isOpen={isOpen}>
+            <HideBar />
+            <HideContent>
+              <p>{hour.dt_txt}</p>
+              <p>{hour.weather[0].description}</p>
+              <p>체감온도 : {hour.main.feels_like}℃</p>
+              <p>습도 : {hour.main.humidity}%</p>
+              <p>구름량(흐림 수준) : {hour.clouds.all}%</p>
+              <p>강우량 : {hour.hasOwnProperty("rain") ? hour.rain["3h"] : "0.0"}mm</p>
+              <p>적설량 : {hour.hasOwnProperty("snow") ? hour.snow["3h"] : "0.0"}mm</p>
+            </HideContent>
+          </Hide>
+        </Data>
+      ))}
+      {/* <Show onClick={togglePanel}>
         <ShowBar className="hover" />
         <ShowContent>
           <p>10:00</p>
@@ -173,7 +249,7 @@ const Hourly = () => {
           <p>적설량 : 0.0mm</p>
           <p>자외선 지수 : 1</p>
         </HideContent>
-      </Hide>
+      </Hide> */}
     </AllContainer>
   );
 };

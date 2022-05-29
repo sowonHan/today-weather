@@ -1,9 +1,12 @@
 import React from "react";
+// import { Route, Routes } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import Board from "../components/Board";
 import styled from "styled-components";
+// import Today from '../components/Today';
+// import Hourly from "../components/Hourly";
 
 const WallPaper = styled.div`
   max-width: 2400px;

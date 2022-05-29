@@ -144,17 +144,17 @@ const Today = () => {
     switch (iconId) {
       case 0:
         return <WiDaySunny size="7rem" color="#ff9100" />;
-      case 2:
+      case "2":
         return <WiThunderstorm size="7rem" color="#682cbf" />;
-      case 3:
+      case "3":
         return <WiRainMix size="7rem" color="#77d195" />;
-      case 5:
+      case "5":
         return <WiUmbrella size="7rem" color="#526eff" />;
-      case 6:
+      case "6":
         return <WiSnowflakeCold size="7rem" color="#c4f5ff" />;
-      case 7:
+      case "7":
         return <WiFog size="7rem" color="#7c5547" />;
-      case 8:
+      case "8":
         return <WiDayCloudy size="7rem" color="#5f7d8e" />;
       default:
         return <WiWindDeg size="7rem" />;

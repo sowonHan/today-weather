@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 import Tab from "./Tab";
 // import Today from "./Today";
 import Hourly from "./Hourly";
+// import { Outlet } from "react-router-dom";
 
 const WhiteBoard = styled.div`
   background-color: rgb(255, 255, 255, 0.9);
