@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
 import {
   WiDaySunny,
   WiDayCloudy,
@@ -104,6 +105,12 @@ const ThirdRow = styled.div`
 `;
 
 const Today = () => {
+  // const location = useLocation();
+  // console.log("결과 :", location.state);
+
+  // const { q } = useParams();
+  // console.log("받아온 거 :", q);
+
   const [loading, setLoading] = useState(false);
   const [today, setToday] = useState("");
 

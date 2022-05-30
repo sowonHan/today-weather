@@ -1,18 +1,25 @@
 import React from "react";
-// import { Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import { Outlet, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
-import Board from "../components/Board";
-import styled from "styled-components";
-// import Today from '../components/Today';
-// import Hourly from "../components/Hourly";
+import Tab from "../components/Tab";
+
+const time = new Date().getHours();
+const timeImage = () => {
+  if (time >= 18) {
+    return "/images/night.jpg";
+  } else {
+    return "/images/sunny.jpg";
+  }
+};
 
 const WallPaper = styled.div`
   max-width: 2400px;
   height: 100vh;
   max-height: 1600px;
-  background-image: url("/images/sunny.jpg");
+  background-image: url(${(props) => props.timeImage});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -26,14 +33,43 @@ const Margin2 = styled.div`
   margin-bottom: 25px;
 `;
 
+const WhiteBoard = styled.div`
+  background-color: rgb(255, 255, 255, 0.9);
+  width: 1260px;
+  height: 700px;
+  margin: 0 auto;
+`;
+
+const City = styled.h1`
+  font-family: "Jua", sans-serif;
+  font-size: 2.5rem;
+  margin-left: 20px;
+  padding-top: 10px;
+  height: 55px;
+`;
+
+const DataContainer = styled.div`
+  width: 1195px;
+  margin: 10px auto;
+`;
+
 const ResultPage = () => {
+  const { q } = useParams();
+  console.log("받아온 거 :", q);
+
   return (
-    <WallPaper>
+    <WallPaper timeImage={timeImage}>
       <Header />
       <Margin1 />
       <SearchBar />
       <Margin2 />
-      <Board></Board>
+      <WhiteBoard>
+        <City>서울</City>
+        <Tab />
+        <DataContainer>
+          <Outlet />
+        </DataContainer>
+      </WhiteBoard>
       <Footer />
     </WallPaper>
   );

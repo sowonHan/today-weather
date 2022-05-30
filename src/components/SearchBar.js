@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
-// import { useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const Background = styled.div`
   width: 1280px;
@@ -41,14 +41,36 @@ const Icon = styled(BiSearch)`
   width: 30px;
   height: 30px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const SearchBar = () => {
+  let navigate = useNavigate();
+
+  const [city, setCity] = useState("");
+  const onChangeCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const q = searchParams.get("q");
+
+  const onSearchCity = () => {
+    setSearchParams({ q: city });
+
+    // navigate("/today", { state: q });
+  };
+
   return (
     <Background>
       <Container>
-        <Input type="text" placeholder="도시 이름을 입력하세요." />
-        <Icon />
+        <Input
+          type="text"
+          placeholder="도시 이름을 입력하세요."
+          value={city}
+          onChange={onChangeCity}
+        />
+        <Icon onClick={onSearchCity} />
       </Container>
     </Background>
   );

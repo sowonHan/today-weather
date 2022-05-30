@@ -90,7 +90,7 @@ const Icon = styled.div`
   height: 50px;
   display: flex;
   justify-content: center;
-  margin-bottom: ${props => 8 * props.temp}px;
+  margin-bottom: ${(props) => 8 * props.temp}px;
 `;
 
 const Hide = styled.div`
@@ -137,10 +137,6 @@ const Hourly = () => {
   const [hours, setHours] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const togglePanel = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
-
   useEffect(() => {
     const getHourly = async () => {
       setLoading(true);
@@ -150,7 +146,15 @@ const Hourly = () => {
             "https://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=14"
           )
           .then((response) => {
-            setHours(response.data.list);
+            const datas = response.data.list;
+            const newData = datas.map((data) => {
+              return {
+                ...data,
+                isopen: false,
+              };
+            });
+
+            setHours(newData);
           });
       } catch (error) {
         console.log("에러 :", error);
@@ -161,7 +165,8 @@ const Hourly = () => {
   }, []);
 
   const selectIcon = (hour) => {
-    let iconId = hour.weather[0].id === 800 ? 0 : (hour.weather[0].id / 100).toFixed(0);
+    let iconId =
+      hour.weather[0].id === 800 ? 0 : (hour.weather[0].id / 100).toFixed(0);
 
     switch (iconId) {
       case 0:
@@ -195,14 +200,24 @@ const Hourly = () => {
     <AllContainer>
       {hours.map((hour) => (
         <Data key={hour.dt}>
-          <Show id={hour.dt} onClick={togglePanel}>
+          <Show
+            onClick={() => {
+              setHours((hours) => {
+                const hoursData = hours.map((toggleHour) =>
+                  toggleHour.dt === hour.dt
+                    ? { ...toggleHour, isopen: !toggleHour.isopen }
+                    : toggleHour
+                );
+
+                return hoursData;
+              });
+            }}
+          >
             <ShowBar />
             <ShowContent>
               <p>{hour.dt_txt.substr(11, 5)}</p>
               <IconContainer>
-                <Icon temp={hour.main.temp}>
-                  {selectIcon(hour)}
-                </Icon>
+                <Icon temp={hour.main.temp}>{selectIcon(hour)}</Icon>
               </IconContainer>
               <p>{hour.main.temp}℃</p>
               <p>{hour.wind.speed}m/s</p>
@@ -210,7 +225,7 @@ const Hourly = () => {
               <p>{hour.hasOwnProperty("rain") ? hour.rain["3h"] : "0.0"}mm</p>
             </ShowContent>
           </Show>
-          <Hide isOpen={isOpen}>
+          <Hide isOpen={hour.isopen}>
             <HideBar />
             <HideContent>
               <p>{hour.dt_txt}</p>
@@ -218,38 +233,18 @@ const Hourly = () => {
               <p>체감온도 : {hour.main.feels_like}℃</p>
               <p>습도 : {hour.main.humidity}%</p>
               <p>구름량(흐림 수준) : {hour.clouds.all}%</p>
-              <p>강우량 : {hour.hasOwnProperty("rain") ? hour.rain["3h"] : "0.0"}mm</p>
-              <p>적설량 : {hour.hasOwnProperty("snow") ? hour.snow["3h"] : "0.0"}mm</p>
+              <p>
+                강우량 : {hour.hasOwnProperty("rain") ? hour.rain["3h"] : "0.0"}
+                mm
+              </p>
+              <p>
+                적설량 : {hour.hasOwnProperty("snow") ? hour.snow["3h"] : "0.0"}
+                mm
+              </p>
             </HideContent>
           </Hide>
         </Data>
       ))}
-      {/* <Show onClick={togglePanel}>
-        <ShowBar className="hover" />
-        <ShowContent>
-          <p>10:00</p>
-          <IconContainer>
-            <Icon>
-              <Sample />
-            </Icon>
-          </IconContainer>
-          <p>19℃</p>
-          <p>2.2m/s</p>
-          <p>0%</p>
-          <p>0.0mm</p>
-        </ShowContent>
-      </Show>
-      <Hide isOpen={isOpen}>
-        <HideBar />
-        <HideContent>
-          <p>맑음</p>
-          <p>체감온도 19℃</p>
-          <p>습도 : 45%</p>
-          <p>강우량 : 0.0mm</p>
-          <p>적설량 : 0.0mm</p>
-          <p>자외선 지수 : 1</p>
-        </HideContent>
-      </Hide> */}
     </AllContainer>
   );
 };
