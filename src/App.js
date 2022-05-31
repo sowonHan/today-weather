@@ -9,10 +9,10 @@ import Hourly from "./components/Hourly";
 function App() {
   return (
     <Routes>
-      <Route path={`/${process.env.REACT_APP_HOST}`} element={<MainPage />} />
-      <Route path="/result" element={<ResultPage />}>
-        <Route path=":today" element={<Today />} />
-        <Route path=":hourly" element={<Hourly />} />
+      <Route path="/today-weather/" element={<MainPage />} />
+      <Route path="" element={<ResultPage />}>
+        <Route path="/today" element={<Today />} />
+        <Route path="/hourly" element={<Hourly />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

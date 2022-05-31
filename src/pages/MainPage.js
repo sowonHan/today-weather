@@ -3,12 +3,14 @@ import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 import SearchBar from "./../components/SearchBar";
 import styled from "styled-components";
+import main from './../images/main.jpg';
+
 
 const Background = styled.div`
   max-width: 2400px;
   height: 100vh;
   max-height: 1600px;
-  background-image: url("/images/main.jpg");
+  background-image: url(${main});
   background-size: cover;
   background-position: center;
   position: relative;

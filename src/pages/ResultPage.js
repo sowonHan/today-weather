@@ -5,13 +5,15 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import Tab from "../components/Tab";
+import sunny from "./../images/sunny.jpg";
+import night from './../images/night.jpg';
 
 const time = new Date().getHours();
 const timeImage = () => {
-  if (time >= 18) {
-    return "/images/night.jpg";
+  if (time <= 18) {
+    return sunny;
   } else {
-    return "/images/sunny.jpg";
+    return night;
   }
 };
 
