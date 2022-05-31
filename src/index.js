@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/today-weather">
     <GlobalStyle />
     <App />
   </BrowserRouter>

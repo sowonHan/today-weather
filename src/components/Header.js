@@ -15,7 +15,7 @@ const Back = styled(Link)`
 `;
 
 const Header = () => {
-  return <Back to="/today-weather/">오늘날씨어때?</Back>;
+  return <Back to="/">오늘날씨어때?</Back>;
 };
 
 export default Header;

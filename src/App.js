@@ -9,8 +9,8 @@ import Hourly from "./components/Hourly";
 function App() {
   return (
     <Routes>
-      <Route path="/today-weather/" element={<MainPage />} />
-      <Route path="" element={<ResultPage />}>
+      <Route path="/" element={<MainPage />} />
+      <Route element={<ResultPage />}>
         <Route path="/today" element={<Today />} />
         <Route path="/hourly" element={<Hourly />} />
       </Route>
