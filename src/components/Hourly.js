@@ -1,6 +1,7 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 import {
   WiDaySunny,
   WiDayCloudy,
@@ -40,7 +41,6 @@ const Show = styled.div`
   width: 110px;
   height: 500px;
   box-sizing: border-box;
-  /* border-left: 1px solid  lightgray; */
   border-right: 1px solid lightgray;
 `;
 
@@ -133,7 +133,7 @@ const HideContent = styled.div`
 `;
 
 const Hourly = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [parents, setParents] = useOutletContext();
   const [hours, setHours] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -143,7 +143,7 @@ const Hourly = () => {
       try {
         const hourly = await axios
           .get(
-            "https://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=14"
+            `https://api.openweathermap.org/data/2.5/forecast?q=${parents}&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr&cnt=14`
           )
           .then((response) => {
             const datas = response.data.list;

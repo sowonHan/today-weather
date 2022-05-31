@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import {
   WiDaySunny,
   WiDayCloudy,
@@ -105,12 +105,21 @@ const ThirdRow = styled.div`
 `;
 
 const Today = () => {
-  // const location = useLocation();
-  // console.log("결과 :", location.state);
+  const location = useLocation();
+  const cityname = () => {
+    if (location.state === null) {
+      if (parents !== "seoul") {
+        return parents;
+      } else {
+        return "seoul";
+      }
+    } else {
+      setParents(location.state.name);
+      return location.state.name;
+    }
+  };
 
-  // const { q } = useParams();
-  // console.log("받아온 거 :", q);
-
+  const [parents, setParents] = useOutletContext();
   const [loading, setLoading] = useState(false);
   const [today, setToday] = useState("");
 
@@ -120,7 +129,7 @@ const Today = () => {
       try {
         const current = await axios
           .get(
-            "https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr"
+            `https://api.openweathermap.org/data/2.5/weather?q=${cityname()}&appid=18bcd66d8c2f78ea7c4d91ad9ee784bc&units=metric&lang=kr`
           )
           .then((response) => {
             const data = response.data;
@@ -136,6 +145,8 @@ const Today = () => {
               rain: data.hasOwnProperty("rain") ? data.rain["1h"] : "0.0",
               snow: data.hasOwnProperty("snow") ? data.snow["1h"] : "0.0",
             });
+
+            // setParents(cityname());
           });
       } catch (error) {
         console.log("에러 :", error);

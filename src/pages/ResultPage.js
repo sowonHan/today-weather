@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
@@ -54,8 +54,7 @@ const DataContainer = styled.div`
 `;
 
 const ResultPage = () => {
-  const { q } = useParams();
-  console.log("받아온 거 :", q);
+  const [parents, setParents] = useState("seoul");
 
   return (
     <WallPaper timeImage={timeImage}>
@@ -64,10 +63,10 @@ const ResultPage = () => {
       <SearchBar />
       <Margin2 />
       <WhiteBoard>
-        <City>서울</City>
+        <City>{parents}</City>
         <Tab />
         <DataContainer>
-          <Outlet />
+          <Outlet context={[parents, setParents]} />
         </DataContainer>
       </WhiteBoard>
       <Footer />
