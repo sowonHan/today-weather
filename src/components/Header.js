@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const Back = styled.div`
+const Back = styled(Link)`
   width: 230px;
   height: 50px;
   background-color: rgb(0, 0, 0, 0.5);
@@ -14,7 +15,7 @@ const Back = styled.div`
 `;
 
 const Header = () => {
-  return <Back>오늘날씨어때?</Back>;
+  return <Back to={`/${process.env.REACT_APP_HOST}`}>오늘날씨어때?</Back>;
 };
 
 export default Header;

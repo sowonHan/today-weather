@@ -9,7 +9,7 @@ import Hourly from "./components/Hourly";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path={`/${process.env.REACT_APP_HOST}`} element={<MainPage />} />
       <Route element={<ResultPage />}>
         <Route path="/today" element={<Today />} />
         <Route path="/hourly" element={<Hourly />} />
