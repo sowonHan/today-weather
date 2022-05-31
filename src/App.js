@@ -10,9 +10,9 @@ function App() {
   return (
     <Routes>
       <Route path={`/${process.env.REACT_APP_HOST}`} element={<MainPage />} />
-      <Route element={<ResultPage />}>
-        <Route path="/today" element={<Today />} />
-        <Route path="/hourly" element={<Hourly />} />
+      <Route path="/result" element={<ResultPage />}>
+        <Route path=":today" element={<Today />} />
+        <Route path=":hourly" element={<Hourly />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
