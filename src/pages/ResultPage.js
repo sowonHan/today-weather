@@ -18,7 +18,7 @@ const timeImage = () => {
 };
 
 const WallPaper = styled.div`
-  max-width: 2400px;
+  max-width: 2560px;
   height: 100vh;
   max-height: 1600px;
   background-image: url(${(props) => props.timeImage});

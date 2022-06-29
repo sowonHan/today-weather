@@ -78,8 +78,8 @@ const ShowContent = styled.div`
 
 const IconContainer = styled.div`
   width: 100px;
-  height: 285px;
-  margin: 15px auto;
+  height: 220px;
+  margin: 15px auto 65px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -89,8 +89,7 @@ const Icon = styled.div`
   width: 50px;
   height: 50px;
   display: flex;
-  justify-content: center;
-  margin-bottom: ${(props) => 8 * props.temp}px;
+  margin-bottom: ${(props) => 4 * props.temp}px;
 `;
 
 const Hide = styled.div`

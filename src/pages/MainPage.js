@@ -7,7 +7,7 @@ import main from './../images/main.jpg';
 
 
 const Background = styled.div`
-  max-width: 2400px;
+  max-width: 2560px;
   height: 100vh;
   max-height: 1600px;
   background-image: url(${main});
