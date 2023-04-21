@@ -54,6 +54,7 @@ const SearchBar = () => {
 
   const onSearchCity = () => {
     navigate("/today", { state: { name: city } });
+    window.location.reload();
   };
 
   const onKeyPress = (e) => {
@@ -67,11 +68,22 @@ const SearchBar = () => {
       <Container>
         <Input
           type="text"
-          placeholder="도시 이름을 입력하세요."
+          placeholder="도시 이름을 영문으로 입력하세요."
+          list="cityname"
           value={city}
           onChange={onChangeCity}
           onKeyPress={onKeyPress}
         />
+        <datalist id="cityname">
+          <option value="seoul" label="서울특별시"></option>
+          <option value="incheon" label="인천광역시"></option>
+          <option value="gwangju" label="광주광역시"></option>
+          <option value="daejeon" label="대전광역시"></option>
+          <option value="daegu" label="대구광역시"></option>
+          <option value="busan" label="부산광역시"></option>
+          <option value="ulsan" label="울산광역시"></option>
+          <option value="gwacheon" label="경기도 과천시"></option>
+        </datalist>
         <Icon onClick={onSearchCity} />
       </Container>
     </Background>
