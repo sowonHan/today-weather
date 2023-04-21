@@ -161,7 +161,7 @@ const Hourly = () => {
       setLoading(false);
     };
     getHourly();
-  }, []);
+  }, [parents]);
 
   const selectIcon = (hour) => {
     let iconId =

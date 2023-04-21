@@ -1,12 +1,12 @@
-# 오늘 날씨 어때
+# ☀ 오늘 날씨 어때
 
-리액트 기반의 도시별 일기예보 사이트
+리액트 기반의 일기예보 사이트
 
-## 프로젝트 소개
+## 🌡 프로젝트 소개
 
 내용
 
-> **개발 기간** : 202
+> **개발 기간** : 2022년 5월 13일 ~ 2022년 5월 31일
 
 ## ⚙ 기술 스택
 
@@ -28,11 +28,11 @@
   - Ant Design
   - React Icons
 
-## 소스
+## ☔ 소스
 
 `OPEN API`
 
-- OpenWeatherMap One Call API
+- [OpenWeatherMap One Call API](https://openweathermap.org/)
 
 `이미지 소스`
 
@@ -47,17 +47,17 @@
 
 </details>
 
-## 주요 기능
+## ❄ 주요 기능
 
 #### 기능명
 
 - 내용
 
-## 💡 개발 계기
+## ⚡ 개발 계기
 
 내용
 
-## 💥 트러블 슈팅
+## 🌪 트러블 슈팅
 
 <details>
   <summary>접기/펼치기</summary>
