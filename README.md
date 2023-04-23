@@ -41,28 +41,28 @@
 <details>
   <summary>접기/펼치기</summary>
   
- 📦today-weather
- ┣📂src
- ┃ ┣ 📂components
- ┃ ┃ ┣ 📜Footer.js
- ┃ ┃ ┣ 📜Header.js
- ┃ ┃ ┣ 📜Hourly.js
- ┃ ┃ ┣ 📜NotFound.js
- ┃ ┃ ┣ 📜SearchBar.js
- ┃ ┃ ┣ 📜Tab.css
- ┃ ┃ ┣ 📜Tab.js
- ┃ ┃ ┗ 📜Today.js
- ┃ ┣ 📂images
- ┃ ┃ ┣ 📜main.jpg
- ┃ ┃ ┣ 📜night.jpg
- ┃ ┃ ┗ 📜sunny.jpg
- ┃ ┣ 📂pages
- ┃ ┃ ┣ 📜MainPage.js
- ┃ ┃ ┗ 📜ResultPage.js
- ┃ ┣ 📜App.js
- ┃ ┣ 📜index.css
- ┃ ┣ 📜index.js
- ┗ 📜.env
+    📦today-weather
+    ┣📂src
+    ┃ ┣ 📂components
+    ┃ ┃ ┣ 📜Footer.js
+    ┃ ┃ ┣ 📜Header.js
+    ┃ ┃ ┣ 📜Hourly.js
+    ┃ ┃ ┣ 📜NotFound.js
+    ┃ ┃ ┣ 📜SearchBar.js
+    ┃ ┃ ┣ 📜Tab.css
+    ┃ ┃ ┣ 📜Tab.js
+    ┃ ┃ ┗ 📜Today.js
+    ┃ ┣ 📂images
+    ┃ ┃ ┣ 📜main.jpg
+    ┃ ┃ ┣ 📜night.jpg
+    ┃ ┃ ┗ 📜sunny.jpg
+    ┃ ┣ 📂pages
+    ┃ ┃ ┣ 📜MainPage.js
+    ┃ ┃ ┗ 📜ResultPage.js
+    ┃ ┣ 📜App.js
+    ┃ ┣ 📜index.css
+    ┃ ┣ 📜index.js
+    ┗ 📜.env
 
 </details>
 
