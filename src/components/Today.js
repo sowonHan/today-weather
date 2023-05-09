@@ -151,7 +151,7 @@ const Today = () => {
       setLoading(false);
     };
     getToday();
-  }, []);
+  }, [cityname]);
 
   const selectIcon = () => {
     let iconId = today.id === 800 ? 0 : (today.id / 100).toFixed(0);
