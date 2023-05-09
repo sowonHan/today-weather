@@ -22,7 +22,6 @@ const dateBuilder = (d) => {
   let day = days[d.getDay()];
   let hour = d.getHours();
   let minute = d.getMinutes();
-  // 디지털 시간 표기 let time = d.toTimeString().substring(0, 5);
 
   return `${year}년 ${month}월 ${date}일 ${day}요일 ${hour}시 ${minute}분`;
 };
@@ -105,7 +104,9 @@ const ThirdRow = styled.div`
 `;
 
 const Today = () => {
+  const [parents, setParents] = useOutletContext();
   const location = useLocation();
+
   const cityname = () => {
     if (location.state === null) {
       if (parents !== "seoul") {
@@ -119,7 +120,6 @@ const Today = () => {
     }
   };
 
-  const [parents, setParents] = useOutletContext();
   const [loading, setLoading] = useState(false);
   const [today, setToday] = useState("");
 
@@ -133,7 +133,6 @@ const Today = () => {
           )
           .then((response) => {
             const data = response.data;
-            // data.name으로 도시명이 나오기는 하는데 일단 보류
 
             setToday({
               temp: data.main.temp,
@@ -145,8 +144,6 @@ const Today = () => {
               rain: data.hasOwnProperty("rain") ? data.rain["1h"] : "0.0",
               snow: data.hasOwnProperty("snow") ? data.snow["1h"] : "0.0",
             });
-
-            // setParents(cityname());
           });
       } catch (error) {
         console.log("에러 :", error);
