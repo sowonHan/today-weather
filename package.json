@@ -2,7 +2,7 @@
   "name": "today-weather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sowonhan.github.io/today-weather",
+  "homepage": "https://sowonhan.github.io/today-weather/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",

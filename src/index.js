@@ -5,7 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -17,10 +17,10 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <HashRouter>
     <GlobalStyle />
     <App />
-  </BrowserRouter>
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
