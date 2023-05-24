@@ -33,6 +33,10 @@
   - Ant Design
   - React Icons
 
+`디자인`
+
+- [Figma](https://www.figma.com/file/mL5vY1XKdclbiJNB5GDKBy/Today-Weather?type=design&node-id=0%3A1&t=7ZLVSGoitkyA8oRV-1)
+
 ## ☔ 소스
 
 `OPEN API`
