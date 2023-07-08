@@ -12,7 +12,7 @@ const Text = styled.h3`
   padding-right: 10px;
   line-height: 28px;
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
 `;
 

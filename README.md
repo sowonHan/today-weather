@@ -1,5 +1,7 @@
 # ☀ 오늘 날씨 어때?
 
+![메인](https://github.com/sowonHan/today-weather/assets/100406001/4affe953-6fb1-4cde-955a-7e8f058f093c)
+
 리액트 기반의 일기예보 사이트
 
 > [배포링크](https://sowonhan.github.io/today-weather/)
@@ -30,6 +32,10 @@
   - styled-reset
   - Ant Design
   - React Icons
+
+`디자인`
+
+- [Figma](https://www.figma.com/file/mL5vY1XKdclbiJNB5GDKBy/Today-Weather?type=design&node-id=0%3A1&t=7ZLVSGoitkyA8oRV-1)
 
 ## ☔ 소스
 
@@ -75,6 +81,8 @@
 
 ### 도시 검색
 
+![검색](https://github.com/sowonHan/today-weather/assets/100406001/df0a52ba-aff3-42d5-bc1e-919db28dedb4)
+
 - datalist 태그로 추천 선택지와 입력 예시를 제공.
 - 아이콘 마우스 클릭, Enter 키 입력 2가지 방식으로 작동되도록 구현.
 - 결과 페이지로 이동시키면서 입력받은 영문 도시명을 상태값으로 전달.
@@ -90,11 +98,15 @@
 
 #### (2) 시간별 단기 예보
 
+![슬라이드](https://github.com/sowonHan/today-weather/assets/100406001/9e536c3f-3d3a-4091-b2cb-39db0dd08604)
+
 - 호출한 API 데이터를 가로형 슬라이드 형태로 클라이언트단에 렌더링.
 - Styled Component로 스타일에 props를 전달해, 온도에 따라 아이콘의 위치가 변동되도록 처리. 슬라이드 전체를 보았을 때 아이콘이 곡선 그래프 형태로 표시.
 - Styled Component로 스타일에 props를 전달하여, 슬라이드의 각 항목을 클릭 시 항목 우측으로 세부 정보가 보이거나 숨겨진다.
 
 ### 스타일
+
+![낮밤](https://github.com/sowonHan/today-weather/assets/100406001/68b13783-4213-40be-9963-632fbb4583dc)
 
 - Date 내장 객체로 현재 시간을 확인하고 Styled Component로 스타일에 props를 전달하여, 오후 6시를 기준으로 2가지 배경을 출력.
 
