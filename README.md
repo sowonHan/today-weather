@@ -1,6 +1,6 @@
 # ☀ 오늘 날씨 어때?
 
-![메인](https://github.com/sowonHan/today-weather/assets/100406001/7740cdf8-07f8-4087-80d0-d94a36ae6e9f)
+![메인](https://github.com/sowonHan/today-weather/assets/100406001/4affe953-6fb1-4cde-955a-7e8f058f093c)
 
 리액트 기반의 일기예보 사이트
 
